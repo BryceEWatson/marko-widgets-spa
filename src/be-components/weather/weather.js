@@ -18,7 +18,7 @@ function getWeatherByCity(cityName) {
 	        // raw response 
 	        console.log('response: ' + response);
 	        // try {
-	        	dataPromise.resolve(JSON.parse(require('./getWeatherModel.js')));
+	        	dataPromise.resolve(JSON.parse(data));
 	    	// } catch(e) {
 	    	// 	console.log('getWeatherByCity response parse fail.')
 	    	// 	//dataPromise.fail();
