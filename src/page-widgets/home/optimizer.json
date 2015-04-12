@@ -1,0 +1,8 @@
+{
+	"dependencies": [
+		"require: marko-widgets",
+		"require: ./widget",
+		"src/fe-components/location-info/optimizer.json",
+		"style.less"
+	]
+}
