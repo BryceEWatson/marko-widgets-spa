@@ -1,5 +1,5 @@
 <div class="location-info" w-bind="./widget">
-	<h1>${city.name}</h1>
+	<h1>${data.location.name}</h1>
 
 	<h3>Coords</h3>
 	<table class="coords">
@@ -8,8 +8,8 @@
 			<td>lon</td>
 		</tr>
 		<tr>
-			<td>${city.lat}</td>
-			<td>${city.lon}</td>
+			<td>${data.location.coord.lat}</td>
+			<td>${data.location.coord.lon}</td>
 		</tr>
 	</table>
 </div>

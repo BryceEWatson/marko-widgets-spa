@@ -1,9 +1,9 @@
-<optimizer-page package-path="./optimizer.json" flags="data.optimizerFlags" />
+<optimizer-page package-path="./optimizer.json" />
 
 <layout-use template="src/layouts/default-layout.marko">
 	<layout-put into="title">Home page</layout-put>
 	<layout-put into="body">
 		${data.coord.lon}
-		<home data="${data}"/>
+		<home model="${data}" />
 	</layout-put>
 </layout-use>

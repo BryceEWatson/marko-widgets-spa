@@ -3,18 +3,14 @@ var Promise = require('q');
 
 module.exports = function(req, res, next) {
 
-	function getData() {
-		console.log('here');
-		var dataPromise = Promise.defer();
+	function getData(callback) {
 		require('src/be-components/weather/weather.js').getWeatherByCity('Vancouver')
 		.then(function(data) {
-			var dataResponse = {
-				data: data
-			};
-			//console.log(data.coord.lon);
-			dataPromise.resolve(dataResponse);
+			callback(data);
+		}).fail(function(result) {
+			console.log('fail: ' + result);
+			//callback(result);
 		});
-		return dataPromise.promise;
 	}
 
 	function renderTemplate(data) {
@@ -24,16 +20,17 @@ module.exports = function(req, res, next) {
 
 	function handleRequest() {
 		 var api = req.params.api;
-		 console.log(api);
-		 getData().then(function(model) {
-			 if(typeof api !== 'undefined' && api === 'api') {
-				res.setHeader('Content-Type', 'text/json; charset=utf-8');
+		 if(typeof api !== 'undefined' && api === 'api') {
+		 	getData(function(model) {
+		 		res.setHeader('Content-Type', 'text/json; charset=utf-8');
 				res.end(JSON.stringify(model));
-			 } else {
-			 	res.setHeader('Content-Type', 'text/html; charset=utf-8');
-			 	renderTemplate(model.data);
-			 }
-		});
+		 	});
+		 } else {
+		 	getData(function(model) {
+		 		res.setHeader('Content-Type', 'text/html; charset=utf-8');
+			 	renderTemplate(model);
+			 })
+		 }
 	}
 	handleRequest();
 }
