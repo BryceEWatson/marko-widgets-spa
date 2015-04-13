@@ -6,10 +6,10 @@ var Weather = {};
 function getWeatherByCity(cityName) {
 	var dataPromise = Promise.defer();
 	client = new Client();
-	args ={
-	    
-	};
-	 
+	args ={};
+	if(!cityName) {
+		cityName = 'Portland, OR';
+	}
 	client.get("http://api.openweathermap.org/data/2.5/weather?q="+cityName, args, 
         function(data, response){
 	        // try {

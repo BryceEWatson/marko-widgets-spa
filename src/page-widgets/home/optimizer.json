@@ -3,6 +3,7 @@
 		"require: marko-widgets",
 		"require: ./widget",
 		"src/fe-components/location-info/optimizer.json",
+		"src/fe-components/city-searchbox/optimizer.json",
 		"style.less"
 	]
 }

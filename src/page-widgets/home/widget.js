@@ -1,1 +1,7 @@
-exports.Widget = {};
+function Widget() {
+
+}
+
+Widget.prototype = { }
+
+exports.Widget = Widget;

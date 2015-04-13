@@ -3,8 +3,8 @@ var Promise = require('q');
 
 module.exports = function(req, res, next) {
 
-	function getData(callback) {
-		require('src/be-components/weather/weather.js').getWeatherByCity('Vancouver')
+	function getData(params, callback) {
+		require('src/be-components/weather/weather.js').getWeatherByCity(params.city)
 		.then(function(data) {
 			callback(data);
 		}).fail(function(result) {
@@ -21,12 +21,12 @@ module.exports = function(req, res, next) {
 	function handleRequest() {
 		 var api = req.params.api;
 		 if(typeof api !== 'undefined' && api === 'api') {
-		 	getData(function(model) {
+		 	getData({},function(model) {
 		 		res.setHeader('Content-Type', 'text/json; charset=utf-8');
 				res.end(JSON.stringify(model));
 		 	});
 		 } else {
-		 	getData(function(model) {
+		 	getData({},function(model) {
 		 		res.setHeader('Content-Type', 'text/html; charset=utf-8');
 			 	renderTemplate(model);
 			 })
