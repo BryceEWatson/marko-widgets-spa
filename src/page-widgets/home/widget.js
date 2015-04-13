@@ -1,7 +1,11 @@
-function Widget() {
+function Widget(config) {
 
 }
 
-Widget.prototype = { }
+Widget.prototype = { 
+	handleSearchSubmit: function(event, el) {
+		console.log('handleSearchSubmit called');
+	}
+}
 
 exports.Widget = Widget;

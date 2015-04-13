@@ -1,5 +1,5 @@
 function Widget() {
-
+	var _this = this;
 }
 
 Widget.prototype = {
@@ -7,6 +7,7 @@ Widget.prototype = {
 		event.preventDefault();
 		var inputTxt = this.$('#inputTxt').val()
 		console.log('inputTxt: '+inputTxt);
+		this.emit('searchSubmit', { value: inputTxt });
 	}
 }
 

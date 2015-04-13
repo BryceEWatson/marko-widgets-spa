@@ -1,4 +1,4 @@
-<div class="home" w-bind="./widget">
+<div class="home" w-bind="./widget" w-onSearchSubmit="handleSearchSubmit">
 	<city-searchbox />
-	<location-info location="${data.model}"/>
+	<location-info location="${data.model}" w-id="locationWidget"/>
 </div>
